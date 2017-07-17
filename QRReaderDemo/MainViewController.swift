@@ -18,6 +18,7 @@ class MainViewController: UIViewController,UIWebViewDelegate {
         mainWeb.loadRequest(request as URLRequest)
         mainWeb.delegate=self
         
+        
 
         // Do any additional setup after loading the view.
     }

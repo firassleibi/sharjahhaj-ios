@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8486A9F91F1D032400A45C2F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486A9F81F1D032400A45C2F /* TestViewController.swift */; };
 		84B527E41F1B9C91001078CD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B527E31F1B9C91001078CD /* MainViewController.swift */; };
 		F4973AB11A21DD6D00E2F44E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4973AB01A21DD6D00E2F44E /* AppDelegate.swift */; };
 		F4973AB31A21DD6D00E2F44E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4973AB21A21DD6D00E2F44E /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8486A9F81F1D032400A45C2F /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		84B527E31F1B9C91001078CD /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F4973AAB1A21DD6D00E2F44E /* QRReaderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRReaderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4973AAF1A21DD6D00E2F44E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				F4973AB71A21DD6D00E2F44E /* Images.xcassets */,
 				F4973AB91A21DD6D00E2F44E /* LaunchScreen.xib */,
 				F4973AAE1A21DD6D00E2F44E /* Supporting Files */,
+				8486A9F81F1D032400A45C2F /* TestViewController.swift */,
 			);
 			path = QRReaderDemo;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			files = (
 				84B527E41F1B9C91001078CD /* MainViewController.swift in Sources */,
 				F4973AB31A21DD6D00E2F44E /* ViewController.swift in Sources */,
+				8486A9F91F1D032400A45C2F /* TestViewController.swift in Sources */,
 				F4973AB11A21DD6D00E2F44E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
