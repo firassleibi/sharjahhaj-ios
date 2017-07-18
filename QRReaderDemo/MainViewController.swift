@@ -7,16 +7,28 @@
 //
 
 import UIKit
+import Foundation
+import SystemConfiguration
 
 class MainViewController: UIViewController,UIWebViewDelegate {
 
     @IBOutlet var mainWeb: UIWebView!
+    var indicator : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     override func viewDidLoad() {
         super.viewDidLoad()
-        let requestURL = NSURL(string:"http://firassleibi.com/qr.php")
-        let request = NSURLRequest(url: requestURL! as URL)
-        mainWeb.loadRequest(request as URLRequest)
-        mainWeb.delegate=self
+        if(isInternetAvailable())
+        {
+            showIndicator()
+            let requestURL = NSURL(string:"http://firassleibi.com/qr.php")
+            let request = NSURLRequest(url: requestURL! as URL)
+            mainWeb.loadRequest(request as URLRequest)
+            mainWeb.delegate=self
+        }
+        else{
+            let myAlert = UIAlertController(title: "خطأ", message: "حدث خطأ ما تآكد من اتصالك بالانترنت وحاول مرة أخرى", preferredStyle: UIAlertControllerStyle.alert)
+            myAlert.addAction(UIAlertAction(title: "موافق", style: UIAlertActionStyle.default, handler: nil))
+            self.present(myAlert, animated: true, completion: nil)
+        }
         
         
 
@@ -39,9 +51,30 @@ class MainViewController: UIViewController,UIWebViewDelegate {
         }
         return true
     }
+    func webView(_webView: UIWebView, didFailLoadWithError error: NSError?) {
+        let myAlert = UIAlertController(title: "خطأ", message: "حدث خطأ ما تآكد من اتصالك بالانترنت وحاول مرة أخرى", preferredStyle: UIAlertControllerStyle.alert)
+        self.present(myAlert, animated: true, completion: nil)
+    }
     func setCode(code : NSString){
         mainWeb.stringByEvaluatingJavaScript(from: "setCode('"+(code as String)+"')")
         
+    }
+    
+    func showIndicator(){
+        // Start the throbber to check if the user exists
+        
+        indicator.frame = CGRect(x: 0, y: 0,width: 40,height: 40);
+        indicator.center = view.center
+        view.addSubview(indicator)
+        indicator.bringSubview(toFront: view)
+        indicator.startAnimating()
+    }
+    func hideIndicator(){
+        indicator.stopAnimating()
+        indicator.removeFromSuperview()
+    }
+    func webViewDidFinishLoad(_ webView: UIWebView){
+        hideIndicator()
     }
     /*
     // MARK: - Navigation
@@ -52,6 +85,26 @@ class MainViewController: UIViewController,UIWebViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
+    func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+            return false
+        }
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+        return (isReachable && !needsConnection)
+    }
     
 
 }

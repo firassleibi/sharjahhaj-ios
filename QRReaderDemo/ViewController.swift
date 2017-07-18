@@ -12,6 +12,7 @@ import AVFoundation
 class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     
     @IBOutlet weak var messageLabel:UILabel!
+    @IBOutlet var backButton: UIButton!
 
     var captureSession:AVCaptureSession?
     var videoPreviewLayer:AVCaptureVideoPreviewLayer?
@@ -59,6 +60,7 @@ class ViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
             
             // Move the message label to the top view
             view.bringSubview(toFront: messageLabel)
+            view.bringSubview(toFront: backButton)
             
             // Initialize QR Code Frame to highlight the QR code
             qrCodeFrameView = UIView()
