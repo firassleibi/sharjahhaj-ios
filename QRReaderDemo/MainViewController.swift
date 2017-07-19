@@ -16,6 +16,7 @@ class MainViewController: UIViewController,UIWebViewDelegate {
     var indicator : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if(isInternetAvailable())
         {
             showIndicator()
@@ -48,6 +49,15 @@ class MainViewController: UIViewController,UIWebViewDelegate {
             let myVC = storyboard?.instantiateViewController(withIdentifier: "QRView") as! ViewController
             myVC.mainView = self
             navigationController?.pushViewController(myVC, animated: true)
+        }
+        if request.url?.scheme == "openmobile" {
+            if let url = URL(string: (request.url?.query!)!), UIApplication.shared.canOpenURL(url) {
+                if #available(iOS 10, *) {
+                    UIApplication.shared.open(url)
+                } else {
+                    UIApplication.shared.openURL(url)
+                }
+            }
         }
         return true
     }
