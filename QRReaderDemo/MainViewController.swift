@@ -9,13 +9,20 @@
 import UIKit
 import Foundation
 import SystemConfiguration
-
+extension UIApplication {
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+}
 class MainViewController: UIViewController,UIWebViewDelegate {
 
     @IBOutlet var mainWeb: UIWebView!
     var indicator : UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        UIApplication.shared.statusBarView?.backgroundColor = .white
         
         if(isInternetAvailable())
         {

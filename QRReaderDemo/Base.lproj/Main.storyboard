@@ -70,11 +70,17 @@
         <scene sceneID="dyx-0c-QCe">
             <objects>
                 <navigationController navigationBarHidden="YES" id="c2M-cE-584" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1vX-N1-gke">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="6lf-c3-vh0">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="GRU-NM-Uxt" kind="relationship" relationship="rootViewController" id="eYa-6K-liT"/>
                     </connections>
@@ -103,7 +109,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fXm-w4-fe2" firstAttribute="top" secondItem="b6G-Ff-rNU" secondAttribute="bottom" id="Bn4-MH-u1F"/>
-                            <constraint firstItem="b6G-Ff-rNU" firstAttribute="top" secondItem="aEM-kp-4Dl" secondAttribute="top" id="Lcv-6i-jd8"/>
+                            <constraint firstItem="b6G-Ff-rNU" firstAttribute="top" secondItem="aEM-kp-4Dl" secondAttribute="top" id="Elu-tu-t1M"/>
                             <constraint firstAttribute="trailing" secondItem="b6G-Ff-rNU" secondAttribute="trailing" id="OOB-fr-Qzc"/>
                             <constraint firstItem="b6G-Ff-rNU" firstAttribute="leading" secondItem="aEM-kp-4Dl" secondAttribute="leading" id="qtg-vl-Ncx"/>
                         </constraints>
